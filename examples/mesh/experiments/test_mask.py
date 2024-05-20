@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 import time
-
 import numpy as np
-
 import pyro.mesh.boundary as bnd
 from pyro.mesh import patch
 
@@ -56,7 +54,6 @@ class Mask(object):
 n = 1024
 
 myg = patch.Grid2d(n, 2*n, xmax=1.0, ymax=2.0)
-
 myd = patch.CellCenterData2d(myg)
 
 bc = bnd.BC()
@@ -85,7 +82,6 @@ da2 = myg.scratch_array()
 da2[m.valid] = a[m.ip1] - a[m.im1]
 
 print("mask method: ", time.time() - start)
-
 print(np.max(np.abs(da2 - da)))
 
 # roll -- note, we roll in the opposite direction of the shift
@@ -94,16 +90,13 @@ da3 = myg.scratch_array()
 da3[:] = np.roll(a, -1, axis=0) - np.roll(a, 1, axis=0)
 
 print("roll method: ", time.time() - start)
-
 print(np.max(np.abs(da3[m.valid] - da[m.valid])))
 
 
 # ArrayIndex
 start = time.time()
 da4 = myg.scratch_array()
-
 da4.v()[:, :] = a.ip(1) - a.ip(-1)
 
 print("ArrayIndex method: ", time.time() - start)
-
 print(np.max(np.abs(da4[m.valid] - da[m.valid])))
