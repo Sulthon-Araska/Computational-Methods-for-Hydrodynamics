@@ -18,7 +18,6 @@
 
 
 import numpy as np
-
 import pyro.mesh.array_indexer as ai
 from pyro.mesh import patch
 from pyro.util import msg
