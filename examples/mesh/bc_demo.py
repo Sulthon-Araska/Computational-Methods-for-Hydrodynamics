@@ -2,16 +2,15 @@
 
 
 import numpy as np
-
-import mesh.boundary as bnd
-import mesh.patch
+import pyro.mesh.boundary as bnd
+import pyro.mesh.patch as patch
 
 
 def doit():
 
-    myg = mesh.patch.Grid2d(4, 4, ng=2, xmax=1.0, ymax=1.0)
+    myg = patch.Grid2d(4, 4, ng=2, xmax=1.0, ymax=1.0)
 
-    mydata = mesh.patch.CellCenterData2d(myg, dtype=np.int)
+    mydata = patch.CellCenterData2d(myg, dtype=float)
 
     bco = bnd.BC(xlb="outflow", xrb="outflow",
                  ylb="outflow", yrb="outflow")
