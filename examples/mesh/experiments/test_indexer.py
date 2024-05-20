@@ -2,7 +2,6 @@
 
 
 import numpy as np
-
 from pyro.mesh import patch
 
 myg = patch.Grid2d(8, 8, ng=2)
@@ -23,7 +22,6 @@ print(b)
 print(" ")
 
 print(a)
-
 print(" ")
 
 c = a.ip(1)
@@ -31,8 +29,6 @@ print(id(c))
 print(c.flags.owndata)
 
 print(c)
-
-
 print(" ")
 
 d = a.v(s=2)
@@ -40,5 +36,4 @@ print(d)
 d[:, :] = 0.0
 
 print(" ")
-
 print(a)
